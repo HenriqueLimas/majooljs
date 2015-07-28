@@ -1,3 +1,1 @@
-;(function(window) {
-  window.mjs = {};
-})(window);
+window.mjs = {};

@@ -1,3 +1,5 @@
+window.mjs = {};
+
 /**
  * Modules to be used.
  * @type {Object}
