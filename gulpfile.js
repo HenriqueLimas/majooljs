@@ -25,6 +25,14 @@ gulp.task('test:tdd', function(done) {
   new Karma(karmaConfig, done).start();
 });
 
+gulp.task('test:ci', function(done) {
+  new Karma({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true,
+    browsers: ['PhantomJS']
+  }, done).start();
+});
+
 gulp.task('test', function(done) {
   new Karma({
     configFile: __dirname + '/karma.conf.js',
