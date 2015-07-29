@@ -1,4 +1,4 @@
-MajoolJS
+MajoolJS [![Build Status](https://travis-ci.org/HenriqueLimas/majooljs.svg)](https://travis-ci.org/HenriqueLimas/majooljs)
 ========
 ### What is it?
 MajoolJS is a simple way to separate your code in modules without any configuration
