@@ -11,7 +11,7 @@ Lazy Loading, because the others modules loaders know do very well this job.
 ### Basic Use
 ```html
 <script src="majool.js"></script>
-<script src="my-module.js"></script>
+<script src="my-first-module.js"></script>
 <script src="main.js"></script>
 ```
 Where ```my-first-module.js``` is:
