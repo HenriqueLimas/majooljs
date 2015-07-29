@@ -32,13 +32,15 @@ gulp.task('test', function(done) {
   }, done).start();
 });
 
-gulp.task('clean', function() {
-  return del('./dist');
-});
+gulp.task('clean', del.bind(null, ['dist']));
 
 gulp.task('build', function() {
   return gulp.src(['src/majool.js', 'src/module/*.js'])
     .pipe($.concat('majool.js'))
+    .pipe($.iife())
+    .pipe(gulp.dest('./dist/'))
+    .pipe($.uglify())
+    .pipe($.concat('majool.min.js'))
     .pipe(gulp.dest('./dist/'));
 });
 
