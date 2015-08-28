@@ -111,6 +111,10 @@ function importComponent (properties) {
     var module = {};
     var moduleRequested = mjs.modules_[moduleName];
 
+    if (!moduleRequested) {
+      throw new Error('Majool says: the module "' + moduleName + '" does not exist.');
+    }
+
     if (Array.isArray(properties)) {
       for (var i = 0, length = properties.length; i < length; i++) {
         var componentKey = properties[i];
@@ -123,6 +127,10 @@ function importComponent (properties) {
       }
 
       return module;
+    }
+
+    if (!moduleRequested.default_) {
+      throw new Error('Majool says: the module "' + moduleName + '" does not have a default component.');
     }
 
     if (!(properties in moduleRequested.default_)) {
