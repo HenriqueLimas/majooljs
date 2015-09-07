@@ -227,6 +227,35 @@
           });
         });
       });
+
+      describe('from():', function() {
+        describe('when does not exist the module', function() {
+          it('should throw an error.', function() {
+            var fakeModule = 'imNotHere';
+            expect(function() {
+              mjs.import(['MyFakeComponent']).from(fakeModule);
+            }).toThrowError('Majool says: the module "' + fakeModule + '" does not exist.');
+          });
+        });
+
+        describe('searching for a default component:', function() {
+          var moduleName;
+
+          beforeEach(function() {
+            moduleName = 'iAmHere';
+
+            mjs.module(moduleName);
+          });
+
+          describe('when does not exists any default value', function() {
+            it('should throw an error.', function() {
+              expect(function() {
+                mjs.import('MyFakeDefaultComponent').from(moduleName);
+              }).toThrowError('Majool says: the module "' + moduleName + '" does not have a default component.');
+            });
+          });
+        });
+      });
     });
   });
 })();
