@@ -1,0 +1,16 @@
+{
+  "name": "majooljs",
+  "version": "0.0.0",
+  "homepage": "https://github.com/HenriqueLimas/majooljs",
+  "authors": [
+    "Henrique Ramos Limas <henrique.ramos.limas@gmail.com>"
+  ],
+  "description": "MajoolJS is a simple way to separate your code in modules without any configuration.",
+  "keywords": [
+    "modules",
+    "majool",
+    "import",
+    "export"
+  ],
+  "license": "MIT"
+}
