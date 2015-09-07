@@ -8,9 +8,24 @@ The syntax of Majool is inspired in modularization of ES2015.
 MajoolJS is not a file/module loader like [RequireJS](http://requirejs.org/) or [SystemJS](https://github.com/systemjs/systemjs) and Majool does not works with
 Lazy Loading, because the others modules loaders know do very well this job.
 
+### Download / Clone
+**Bower**:
+```bash
+bower install majooljs
+```
+
+Alternatively you can [download](https://github.com/HenriqueLimas/majooljs/archive/master.zip)
+this repository.
+
+Or you can clone the repo using Git:
+
+```bash
+git clone https://github.com/HenriqueLimas/majooljs.git
+```
+
 ### Basic Use
 ```html
-<script src="majool.js"></script>
+<script src="bower_components/majooljs/dist/majool.js"></script>
 <script src="my-first-module.js"></script>
 <script src="main.js"></script>
 ```
