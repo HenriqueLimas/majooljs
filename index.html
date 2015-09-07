@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Majooljs by HenriqueLimas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Majooljs</h1>
+      <h2 class="project-tagline"></h2>
+      <a href="https://github.com/HenriqueLimas/majooljs" class="btn">View on GitHub</a>
+      <a href="https://github.com/HenriqueLimas/majooljs/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/HenriqueLimas/majooljs/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="majooljs-" class="anchor" href="#majooljs-" aria-hidden="true"><span class="octicon octicon-link"></span></a>MajoolJS <a href="https://travis-ci.org/HenriqueLimas/majooljs"><img src="https://travis-ci.org/HenriqueLimas/majooljs.svg" alt="Build Status"></a>
+</h1>
+
+<h3>
+<a id="what-is-it" class="anchor" href="#what-is-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is it?</h3>
+
+<p>MajoolJS is a simple way to separate your code in modules without any configuration.
+The syntax of Majool is inspired in modularization of ES2015.</p>
+
+<h3>
+<a id="what-is-not-it" class="anchor" href="#what-is-not-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is not it?</h3>
+
+<p>MajoolJS is not a file/module loader like <a href="http://requirejs.org/">RequireJS</a> or <a href="https://github.com/systemjs/systemjs">SystemJS</a> and Majool does not works with
+Lazy Loading, because the others modules loaders know do very well this job.</p>
+
+<h3>
+<a id="download--clone" class="anchor" href="#download--clone" aria-hidden="true"><span class="octicon octicon-link"></span></a>Download / Clone</h3>
+
+<p><strong>Bower</strong>:</p>
+
+<div class="highlight highlight-bash"><pre>bower install majooljs</pre></div>
+
+<p>Alternatively you can <a href="https://github.com/HenriqueLimas/majooljs/archive/master.zip">download</a>
+this repository.</p>
+
+<p>Or you can clone the repo using Git:</p>
+
+<div class="highlight highlight-bash"><pre>git clone https://github.com/HenriqueLimas/majooljs.git</pre></div>
+
+<h3>
+<a id="basic-use" class="anchor" href="#basic-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Use</h3>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>bower_components/majooljs/dist/majool.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>my-first-module.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;
+&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>main.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Where <code>my-first-module.js</code> is:</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="pl-c">// create a new module</span>
+  mjs.module(<span class="pl-s"><span class="pl-pds">'</span>myModule<span class="pl-pds">'</span></span>);
+
+  <span class="pl-c">// Exporting MyComponent into myModule</span>
+  mjs.export(<span class="pl-k">function</span> <span class="pl-en">MyComponent</span>() {
+    <span class="pl-v">this</span>.firstName <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Ford<span class="pl-pds">'</span></span>;
+    <span class="pl-v">this</span>.lastName <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Prefect<span class="pl-pds">'</span></span>;
+  });</pre></div>
+
+<p>and <code>main.js</code>is:</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="pl-c">// Importing the MyComponent from module created.</span>
+  <span class="pl-k">var</span> myModule <span class="pl-k">=</span> mjs.import([<span class="pl-s"><span class="pl-pds">'</span>MyComponent<span class="pl-pds">'</span></span>]).from(<span class="pl-s"><span class="pl-pds">'</span>myModule<span class="pl-pds">'</span></span>);
+
+  <span class="pl-c">// Simple Javascript =)</span>
+  <span class="pl-k">var</span> MyComponent <span class="pl-k">=</span> myModule.MyComponent;
+
+  <span class="pl-k">var</span> fordPrefect <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">MyComponent</span>();</pre></div>
+
+<h3>
+<a id="api-reference" class="anchor" href="#api-reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>API Reference</h3>
+
+<h5>
+<a id="modulename" class="anchor" href="#modulename" aria-hidden="true"><span class="octicon octicon-link"></span></a>module(name):</h5>
+
+<p>Create a module and define the current module.</p>
+
+<h5>
+<a id="exportnameclasscomponentobject-component" class="anchor" href="#exportnameclasscomponentobject-component" aria-hidden="true"><span class="octicon octicon-link"></span></a>export([name|classComponent|object], [component]):</h5>
+
+<p>Append the new component in the current module. 
+Where the first parameter can be:</p>
+
+<ul>
+<li>a string name</li>
+<li>Constructor</li>
+<li>object with all the keys to be exported.</li>
+</ul>
+
+<p>The <code>component</code> parameter is used when the first parameter is a string.</p>
+
+<h5>
+<a id="exportdefaultnameclasscomponentobject-component" class="anchor" href="#exportdefaultnameclasscomponentobject-component" aria-hidden="true"><span class="octicon octicon-link"></span></a>exportDefault([name|classComponent|object], [component]):</h5>
+
+<p>Append the new component and set that as default in the current module.
+Where the first parameter can be:</p>
+
+<ul>
+<li>a string name</li>
+<li>Constructor</li>
+<li>object with all the keys to be exported.</li>
+</ul>
+
+<p>The <code>component</code> parameter is used when the first parameter is a string.</p>
+
+<h5>
+<a id="importarraystringfrommodulename" class="anchor" href="#importarraystringfrommodulename" aria-hidden="true"><span class="octicon octicon-link"></span></a>import([array|string]).from(moduleName):</h5>
+
+<p>Prepares the keys to be imported from module. 
+If an <code>array</code> is passed, it returns an object with all properties requested from the module name.
+If a <code>string</code> is passed, it returns a <code>default</code> component from module name.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/HenriqueLimas/majooljs">Majooljs</a> is maintained by <a href="https://github.com/HenriqueLimas">HenriqueLimas</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
