@@ -51,8 +51,8 @@ function exportComponent (name, component) {
 
     mjs.current_[name] = component;
   } else if (typeOf === 'function') {
-    // TODO: Implement for IE.
-    mjs.current_[name.name] = name;
+    var functionName = getFunctionName(name);
+    mjs.current_[functionName] = name;
   } else if (typeOf  === 'object') {
     for (var key in name) {
       if ({}.hasOwnProperty.call(name, key)) {
@@ -88,10 +88,22 @@ function exportDefault(name, component) {
 
     mjs.current_.default_[name] = component;
   } else if (typeOf === 'function') {
-    mjs.current_.default_[name.name] = name;
+    var functionName = getFunctionName(name);
+    mjs.current_.default_[functionName] = name;
   } else {
     throw new Error('Majool says: you need to pass a correct first parameter!');
   }
+}
+
+/**
+ * Return the name of a function
+ * @param  {Function} func function to get the name
+ * @return {String|null}   Return the name of the function or null if is anonymous
+ * @private
+ */
+function getFunctionName(func) {
+  var matcher = func.toString().match(/^function\s+(\w*)/);
+  return matcher && matcher[1];
 }
 
 /**
