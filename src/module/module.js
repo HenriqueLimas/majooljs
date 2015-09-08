@@ -102,6 +102,8 @@ function exportDefault(name, component) {
  * @private
  */
 function getFunctionName(func) {
+  'use strict';
+
   var matcher = func.toString().match(/^function\s+(\w*)/);
   return matcher && matcher[1];
 }
