@@ -56,8 +56,8 @@ function exportComponent (name, component) {
 
     mjs.current_[name] = component;
   } else if (typeOf === 'function') {
-    // TODO: Implement for IE.
-    mjs.current_[name.name] = name;
+    var functionName = getFunctionName(name);
+    mjs.current_[functionName] = name;
   } else if (typeOf  === 'object') {
     for (var key in name) {
       if ({}.hasOwnProperty.call(name, key)) {
@@ -93,10 +93,24 @@ function exportDefault(name, component) {
 
     mjs.current_.default_[name] = component;
   } else if (typeOf === 'function') {
-    mjs.current_.default_[name.name] = name;
+    var functionName = getFunctionName(name);
+    mjs.current_.default_[functionName] = name;
   } else {
     throw new Error('Majool says: you need to pass a correct first parameter!');
   }
+}
+
+/**
+ * Return the name of a function
+ * @param  {Function} func function to get the name
+ * @return {String|null}   Return the name of the function or null if is anonymous
+ * @private
+ */
+function getFunctionName(func) {
+  'use strict';
+
+  var matcher = func.toString().match(/^function\s+(\w*)/);
+  return matcher && matcher[1];
 }
 
 /**
@@ -116,6 +130,10 @@ function importComponent (properties) {
     var module = {};
     var moduleRequested = mjs.modules_[moduleName];
 
+    if (!moduleRequested) {
+      throw new Error('Majool says: the module "' + moduleName + '" does not exist.');
+    }
+
     if (Array.isArray(properties)) {
       for (var i = 0, length = properties.length; i < length; i++) {
         var componentKey = properties[i];
@@ -128,6 +146,10 @@ function importComponent (properties) {
       }
 
       return module;
+    }
+
+    if (!moduleRequested.default_) {
+      throw new Error('Majool says: the module "' + moduleName + '" does not have a default component.');
     }
 
     if (!(properties in moduleRequested.default_)) {
