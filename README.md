@@ -1,4 +1,6 @@
-MajoolJS [![Build Status](https://travis-ci.org/HenriqueLimas/majooljs.svg)](https://travis-ci.org/HenriqueLimas/majooljs)
+[![Build Status](https://travis-ci.org/HenriqueLimas/majooljs.svg)](https://travis-ci.org/HenriqueLimas/majooljs) [![Code Climate](https://codeclimate.com/github/HenriqueLimas/majooljs/badges/gpa.svg)](https://codeclimate.com/github/HenriqueLimas/majooljs) [![Test Coverage](https://codeclimate.com/github/HenriqueLimas/majooljs/badges/coverage.svg)](https://codeclimate.com/github/HenriqueLimas/majooljs/coverage)
+
+MajoolJS
 ========
 ### What is it?
 MajoolJS is a simple way to separate your code in modules without any configuration.
